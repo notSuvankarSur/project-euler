@@ -12,3 +12,19 @@ for i in range(2):
                                 count += 1
 
 print(count)
+
+
+def number_of_ways(arr, total):
+
+    dp = [0 for _ in range(total + 1)]
+    dp[0] = 1
+
+    for i in range(len(arr)):
+        for j in range(arr[i], total + 1):
+            dp[j] += dp[j - arr[i]]
+
+    return dp[total]
+
+
+array = [1, 2, 5, 10, 20, 50, 100, 200]
+print(number_of_ways(array, 200))
